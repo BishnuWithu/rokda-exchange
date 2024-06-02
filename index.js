@@ -37,7 +37,7 @@ app.get("/webBuffer", (request, response) => {
                 if(done){
                     break;
                 }
-                console.log("<=chunk received=>")
+                console.log("> chunk received <")
                 response.write(value)
             }
             console.log("<--streaming complete")
