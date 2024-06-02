@@ -1,10 +1,6 @@
-const { StringDecoder } = require("string_decoder");
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const express = require("express");
-const zlib = require('zlib');
-const { json } = require("body-parser");
-const { query } = require("express");
+const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 2404;
 const userAgents = [
