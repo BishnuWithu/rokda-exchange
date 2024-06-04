@@ -11,6 +11,14 @@ const userAgents = [
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15',
     'Mozilla/5.0 (iPhone; CPU iPhone OS 16_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Mobile/15E148 Safari/604.1'
 ];
+const headers = {
+    'User-Agent': userAgents[Math.floor(Math.random() * userAgents.length)],
+    'Accept-Language': 'en-US,en;q=0.5',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'DNT': '1',
+    'Connection': 'keep-alive',
+    'Upgrade-Insecure-Requests': '1',
+};
 
 app.use(express.json());
 // Endpoint for processing webpages
@@ -18,7 +26,6 @@ app.get("/webBuffer", (request, response) => {
 
     async function fetchStream() {
         try {
-            const headers = {'User-Agent' : userAgents[Math.floor(Math.random()*userAgents.length)]};
             let url = request.query.urlToFetch || "";
             Object.keys(request.query).forEach((key) => {
 
@@ -55,7 +62,6 @@ app.use(bodyParser.json());
 app.post("/retrieve", async (request, response) => {
     try {
         const { url, payload } = request.body;
-        const headers = {'User-Agent' : userAgents[Math.floor(Math.random()*userAgents.length)]};
         const fetchedResponse = await axios.post(url, payload, {headers});
         const responseData = fetchedResponse.data;
         
