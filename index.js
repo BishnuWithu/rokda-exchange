@@ -66,8 +66,10 @@ app.post("/retrieve", async (request, response) => {
         const fetchedResponse = await axios.post(url, payload, {headers});
         const responseData = fetchedResponse.data;
         
+        console.log(`URL: ${url}`);
+        console.log(`Headers: ${JSON.stringify(headers)}`);
+
         return response.json(responseData);
-        
     } catch (error) {
         console.error(`Error processing request: ${error}`);
         response.status(500).send(`Error processing the URL/Payload: ${error}`);
