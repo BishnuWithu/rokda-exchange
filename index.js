@@ -35,6 +35,7 @@ app.get("/webBuffer", (request, response) => {
                 }     
             })
             console.log(`URL: ${url}`);
+            console.log(`Headers: ${JSON.stringify(headers)}`);
 
             let responseFetched = await fetch(url, headers)
             console.log("streaming started-->")
@@ -45,7 +46,7 @@ app.get("/webBuffer", (request, response) => {
                 if(done){
                     break;
                 }
-                console.log("> chunk received <")
+                console.log("> ..chunk received.. <")
                 response.write(value)
             }
             console.log("<--streaming complete")
